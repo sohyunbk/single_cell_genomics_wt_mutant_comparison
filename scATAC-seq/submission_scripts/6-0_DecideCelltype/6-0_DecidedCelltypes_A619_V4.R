@@ -1,7 +1,7 @@
 ## MRake metafile & plot for estimated annotation
 library(ggplot2)
 library(stringr)
-source("/home/sb14489/Epigenomics/scATAC-seq/0_Function/DrawFigures_QC_Annotation_forUMAP.R")
+source("../../functions/DrawFigures_QC_Annotation_forUMAP.R")
 
 ## Make new metafile bycombining all the meta
 setwd("/scratch/sb14489/3.scATAC/2.Maize_ear/5.CellClustering/Ref_AfterMt0.5Cutoff/Tn5Cut1000_Binsize500_Mt0.05_MinT0.01_MaxT0.05_PC100/")
