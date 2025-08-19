@@ -1,0 +1,14 @@
+L1
+L1atFloralMeristem
+FloralMeristem_SuppressedBract
+IM-OC
+SPM-base_SM-base
+ProcambialMeristem_ProtoXylem_MetaXylem
+PhloemPrecursor
+ProtoPhloem_MetaPhloem_CompanionCell_PhloemParenchyma
+XylemParenchyma_PithParenchyma
+Unknown1
+Unknown2
+Unknown_Sclerenchyma
+Unknown_lowFRiP
+G2_M
