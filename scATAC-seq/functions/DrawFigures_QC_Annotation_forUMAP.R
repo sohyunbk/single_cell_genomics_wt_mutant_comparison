@@ -3,16 +3,26 @@ library(stringr)
 library("RColorBrewer")
 library(gridExtra)
 
-ColorForPreAnn <- c( "#f58c8c", "#FFB380", "#FFECB3", "#a2d179", "#B3FFB3","#44c78e", "#B3FFE5",
-                     "#8dccca", "#48a2f0", "#69a0cf", "#b2bcf7", "#D1B3FF", "#a088f7","#865b8a")
-colorr <- c("#4F96C4","#84f5d9","#0bd43d","#d62744","#FDA33F","#060878","#62a888",
-            "#876b58","#800000", "#800075","#e8cf4f","#adafde","#DE9A89","#5703ff",
-           "#deadce","#fc53b6")
+
 ### Getting metafile as input.
 DrawUMAP_Ann_QC <- function(PreAnnMeta,Meta, Slot, CellOrder, Re1, Re2,OutfilePathName){
   print("Replicates name should be sampleID slot")
-ColorForPreAnn <- c( "#f58c8c", "#FFB380", "#FFECB3", "#a2d179", "#B3FFB3","#44c78e", "#B3FFE5",
-                     "#8dccca", "#48a2f0", "#69a0cf", "#b2bcf7", "#D1B3FF", "#a088f7","#865b8a")
+  ColorForPreAnn <- c(
+    "#944a0d", # orange
+    "#56B4E9", # sky blue
+    "#0736b5", # yellow
+    "#aec8eb", # blue
+    "#D55E00", # vermillion
+    "#CC79A7", # reddish purple
+    "#999999", # grey
+    "#FB8072", # coral
+    "#FDB462", # peach
+    "#BC80BD", # lavender
+    "#8DD3C7", # teal-blue
+    "#7d22c7", # soft purple
+    "#FCCDE5", # pink
+    "#FFED6F")
+  
 PreAnn <- ggplot(PreAnnMeta, aes(x=umap1, y=umap2, color=factor(LouvainClusters))) +
     geom_point(size=0.001) +
     scale_color_manual(values=ColorForPreAnn)+theme_minimal()+
