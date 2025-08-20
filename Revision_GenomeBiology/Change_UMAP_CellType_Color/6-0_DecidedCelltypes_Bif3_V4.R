@@ -1,15 +1,14 @@
 ## Make metafile & plot for estimated annotation
 library(ggplot2)
 library(stringr)
-source("/home/sb14489/Epigenomics/scATAC-seq/0_Function/DrawFigures_QC_Annotation_forUMAP.R")
+source("../../scATAC-seq/functions/DrawFigures_QC_Annotation_forUMAP.R")
 
 ## Make new metafile bycombining all the meta
-setwd("/scratch/sb14489/3.scATAC/2.Maize_ear/5.CellClustering/Organelle5Per_CombineLater/bif3")
 meta <- "bif3_Tn5Cut1000_Binsize500_Mt0.05_MinT0.01_MaxT0.05_PC100_RemoveBLonlyMitoChloroChIP_k50_res0.9.AfterHarmony.metadata.txt"
 loaded_meta_data <- read.table(meta)
 PreAnn <- loaded_meta_data
 
-CellOrder <- readLines("/scratch/sb14489/3.scATAC/2.Maize_ear/6.Annotation/0.AnnotatedMeta/Ann_v4_CellType_order_forA619Bif3.txt")
+CellOrder <- readLines("Ann_v4_CellType_order_forA619Bif3.txt")
 Cluster1 <- read.table("bif3_Cluster1_Recluster_Sub_res1_knear100_Partmetadata.txt")
 head(Cluster1)
 
@@ -47,7 +46,6 @@ NewMeta[which(NewMeta$LouvainClusters =="13"),]$Ann_v4 <- "ProtoPhloem_MetaPhloe
 NewMeta[which(NewMeta$LouvainClusters =="14"),]$Ann_v4 <- "IM-OC"
 ######################
 
-setwd("/scratch/sb14489/3.scATAC/2.Maize_ear/6.Annotation/0.AnnotatedMeta/Bif3")
 
 write.table(NewMeta, file=paste0("Bif3_AnnV4_metadata.txt"),
             quote=F, row.names=T, col.names=T, sep="\t")

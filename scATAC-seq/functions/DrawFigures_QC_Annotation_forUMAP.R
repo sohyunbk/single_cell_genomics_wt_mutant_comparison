@@ -32,7 +32,7 @@ PreAnn <- ggplot(PreAnnMeta, aes(x=umap1, y=umap2, color=factor(LouvainClusters)
 Meta$Ann <- Meta[[Slot]]
 Meta$Ann <- factor(Meta$Ann,levels=(CellOrder))
 colorr <- c("#4F96C4","#84f5d9","#d4ce1e","#d62744","#FDA33F","#060878","#a97df0",
-            "#876b58","#800000", "#800075","#777d7d","#fc53b6","#DE9A89","#97c9b5",
+            "#876b58","#800000", "#800075","#777d7d","#fc53b6","#DE9A89","#edc7f0",
             "#deadce","#fc53b6")
 
 All <- ggplot(Meta, aes(x=umap1, y=umap2, color=factor(Ann))) +
