@@ -11,7 +11,7 @@ process process_read_data {
 
     script:
     """
-    #!/home/sb14489/miniconda3/envs/Spatial/bin/python
+    #!/usr/bin/env python3
     import scanpy as sc
     import squidpy as sq
     import pandas as pd
@@ -50,7 +50,7 @@ process process_qc_preprocessing {
 
     script:
     """
-    #!/home/sb14489/miniconda3/envs/Spatial/bin/python
+    #!/usr/bin/env python3
     import scanpy as sc
     import seaborn as sns
     import matplotlib.pyplot as plt
@@ -120,7 +120,7 @@ process markergene {
 
     script:
     """
-    python "${params.ScriptDir}marker_gene_testing.py" --output_name "$params.output_name" --input_path "$params.output_path" --markergenelist "$params.MarkerGene"
+    python3 "${params.ScriptDir}marker_gene_testing.py" --output_name "$params.output_name" --input_path "$params.output_path" --markergenelist "$params.MarkerGene"
     """
     }
 
