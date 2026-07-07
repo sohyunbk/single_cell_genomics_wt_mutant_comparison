@@ -1,3 +1,10 @@
+// QC/normalization thresholds - override via -c config or --min_counts etc on the CLI
+params.min_counts  = params.min_counts  ?: 100
+params.min_genes   = params.min_genes   ?: 50
+params.mt_pct      = params.mt_pct      ?: 20
+params.pt_pct      = params.pt_pct      ?: 20
+params.n_top_genes = params.n_top_genes ?: 2000
+
 process process_read_data {
     output:
     stdout
@@ -66,17 +73,17 @@ process process_qc_preprocessing {
     plt.savefig("$params.output_name"+"_QC_Histogram.pdf") ## Save Figure
 
     #print("Before filtering: Cell - "+ str(cell - adata.n_obs) +"gene - "+str(adata.n_vars))       # check how many genes X cells
-    sc.pp.filter_cells(adata, min_counts=100)
-    sc.pp.filter_cells(adata, min_genes=50)
+    sc.pp.filter_cells(adata, min_counts=$params.min_counts)
+    sc.pp.filter_cells(adata, min_genes=$params.min_genes)
 
-    adata = adata[adata.obs["total_counts_Mt"] < 20].copy()
-    adata = adata[adata.obs["total_counts_PT"] < 20].copy()
+    adata = adata[adata.obs["total_counts_Mt"] < $params.mt_pct].copy()
+    adata = adata[adata.obs["total_counts_PT"] < $params.pt_pct].copy()
     #print(f"#cells after MT filter: {adata.n_obs}")
     plt.savefig("$params.output_name"+"_QC_Histogram.pdf")
     ## normalization
     sc.pp.normalize_total(adata, inplace=True)
     sc.pp.log1p(adata)
-    sc.pp.highly_variable_genes(adata, flavor="seurat", n_top_genes=2000)
+    sc.pp.highly_variable_genes(adata, flavor="seurat", n_top_genes=$params.n_top_genes)
     # Manifold embedding and clustering based on transcriptional similarity
     sc.pp.pca(adata)
     sc.pp.neighbors(adata)
