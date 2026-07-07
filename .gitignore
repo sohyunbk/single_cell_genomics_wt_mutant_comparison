@@ -1,19 +1,8 @@
-.DS_Store
-<<<<<<< Updated upstream
+*.DS_Store
 Spatial/1_QC_MarkerGene/.\!67091\!.DS_Store
 Spatial/1_QC_MarkerGene/.\!67110\!.DS_Store
 Spatial/1_QC_MarkerGene/.\!67115\!.DS_Store
 Spatial/1_QC_MarkerGene/.\!67138\!.DS_Store
 Spatial/1_QC_MarkerGene/.\!67205\!.DS_Store
 Spatial/1_QC_MarkerGene/.\!67230\!.DS_Store
-=======
-*.DS_Store
-Spatial/.DS_Store
-.DS_Store
->>>>>>> Stashed changes
-.DS_Store
-Spatial/.DS_Store
-Spatial/.DS_Store
-scATAC-seq/.DS_Store
-scATAC-seq/.DS_Store
-scATAC-seq/.DS_Store
+__pycache__/

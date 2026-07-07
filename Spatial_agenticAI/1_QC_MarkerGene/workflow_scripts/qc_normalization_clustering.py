@@ -26,9 +26,10 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
-print("Current working directory:", os.getcwd())
-# Create the output directory if it does not exist
 adata = sc.read(f"{args.input_path}/adata.h5ad")
+
+os.chdir(args.output_path)
+print("Current working directory:", os.getcwd())
 
 if args.suggest_thresholds:
     def describe(series):
