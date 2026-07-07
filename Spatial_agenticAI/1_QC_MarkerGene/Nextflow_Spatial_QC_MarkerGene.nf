@@ -9,6 +9,7 @@ process process_read_data {
     output:
     stdout
 
+    script:
     """
     #!/home/sb14489/miniconda3/envs/Spatial/bin/python
     import scanpy as sc
@@ -47,6 +48,7 @@ process process_qc_preprocessing {
     output:
     stdout
 
+    script:
     """
     #!/home/sb14489/miniconda3/envs/Spatial/bin/python
     import scanpy as sc
@@ -116,6 +118,7 @@ process markergene {
     output:
     stdout
 
+    script:
     """
     python "${params.ScriptDir}marker_gene_testing.py" --output_name "$params.output_name" --input_path "$params.output_path" --markergenelist "$params.MarkerGene"
     """
