@@ -24,8 +24,28 @@ parser.add_argument(
         "--mt_pct/--pt_pct before the real run."
     ),
 )
+parser.add_argument(
+    '--thresholds_json',
+    default=None,
+    help=(
+        "Path to a JSON file with agent- or human-chosen thresholds "
+        "(keys: min_counts, min_genes, mt_pct, pt_pct, n_top_genes). "
+        "Any key present overrides the matching --min_* / --*_pct / "
+        "--n_top_genes argument."
+    ),
+)
 
 args = parser.parse_args()
+
+# Let an external decision file (e.g. from the agent step) override the
+# individual threshold args, keeping each argument's declared type.
+if args.thresholds_json:
+    with open(args.thresholds_json) as _f:
+        _chosen = json.load(_f)
+    for _key in ("min_counts", "min_genes", "mt_pct", "pt_pct", "n_top_genes"):
+        if _chosen.get(_key) is not None:
+            setattr(args, _key, type(getattr(args, _key))(_chosen[_key]))
+
 adata = sc.read(f"{args.input_path}/adata.h5ad")
 
 os.chdir(args.output_path)
